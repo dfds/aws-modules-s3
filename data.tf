@@ -40,7 +40,7 @@ data "aws_iam_policy_document" "kms" {
   override_policy_documents = var.kms_override_policy_documents
 
   dynamic "statement" {
-    for_each = var.enable_default_policy ? ["OK"] : []
+    for_each = var.enable_kms_default_policy ? ["OK"] : []
 
     content {
       sid       = "DefaultPolicy"
@@ -55,7 +55,7 @@ data "aws_iam_policy_document" "kms" {
   }
 
   dynamic "statement" {
-    for_each = length(var.key_administrators) > 0 ? ["OK"] : []
+    for_each = length(var.kms_key_administrators) > 0 ? ["OK"] : []
 
     content {
       sid = "KeyAdmin"
@@ -78,14 +78,14 @@ data "aws_iam_policy_document" "kms" {
       resources = ["*"]
 
       principals {
-        identifiers = var.key_administrators
+        identifiers = var.kms_key_administrators
         type        = "AWS"
       }
     }
   }
 
   dynamic "statement" {
-    for_each = length(var.key_users) > 0 ? ["OK"] : []
+    for_each = length(var.kms_key_users) > 0 ? ["OK"] : []
 
     content {
       sid = "KeyUser"
@@ -102,7 +102,7 @@ data "aws_iam_policy_document" "kms" {
       resources = ["*"]
 
       principals {
-        identifiers = var.key_users
+        identifiers = var.kms_key_users
         type        = "AWS"
       }
     }

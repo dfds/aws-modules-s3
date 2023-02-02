@@ -61,7 +61,7 @@ variable "kms_key_alias" {
   default     = ""
 }
 
-variable "enable_default_policy" {
+variable "enable_kms_default_policy" {
   type        = bool
   description = "Whether to enable default policy for KMS key"
   default     = true
@@ -73,13 +73,13 @@ variable "enable_key_rotation" {
   default     = true
 }
 
-variable "key_administrators" {
+variable "kms_key_administrators" {
   type        = list(string)
   description = "List of KMS key administrators"
   default     = []
 }
 
-variable "key_users" {
+variable "kms_key_users" {
   type        = list(string)
   description = "List of KMS key users"
   default     = []

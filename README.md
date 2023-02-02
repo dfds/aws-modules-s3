@@ -44,11 +44,11 @@ No modules.
 | <a name="input_bucket_name"></a> [bucket\_name](#input\_bucket\_name) | Name of the S3 bucket | `string` | n/a | yes |
 | <a name="input_bucket_versioning_configuration"></a> [bucket\_versioning\_configuration](#input\_bucket\_versioning\_configuration) | Whether to enable bucket versioning | `string` | `"Enabled"` | no |
 | <a name="input_create_kms"></a> [create\_kms](#input\_create\_kms) | Whether to create a KMS key for S3 bucket | `bool` | `true` | no |
-| <a name="input_enable_default_policy"></a> [enable\_default\_policy](#input\_enable\_default\_policy) | Whether to enable default policy for KMS key | `bool` | `true` | no |
 | <a name="input_enable_key_rotation"></a> [enable\_key\_rotation](#input\_enable\_key\_rotation) | Whether to enable key rotation | `bool` | `true` | no |
-| <a name="input_key_administrators"></a> [key\_administrators](#input\_key\_administrators) | List of KMS key administrators | `list(string)` | `[]` | no |
-| <a name="input_key_users"></a> [key\_users](#input\_key\_users) | List of KMS key users | `list(string)` | `[]` | no |
+| <a name="input_enable_kms_default_policy"></a> [enable\_kms\_default\_policy](#input\_enable\_kms\_default\_policy) | Whether to enable default policy for KMS key | `bool` | `true` | no |
+| <a name="input_kms_key_administrators"></a> [kms\_key\_administrators](#input\_kms\_key\_administrators) | List of KMS key administrators | `list(string)` | `[]` | no |
 | <a name="input_kms_key_alias"></a> [kms\_key\_alias](#input\_kms\_key\_alias) | Alias for the KMS key | `string` | `""` | no |
+| <a name="input_kms_key_users"></a> [kms\_key\_users](#input\_kms\_key\_users) | List of KMS key users | `list(string)` | `[]` | no |
 | <a name="input_kms_override_policy_documents"></a> [kms\_override\_policy\_documents](#input\_kms\_override\_policy\_documents) | List of IAM policy documents that are merged together into the exported document | `list(string)` | `[]` | no |
 | <a name="input_kms_source_policy_documents"></a> [kms\_source\_policy\_documents](#input\_kms\_source\_policy\_documents) | List of IAM policy documents that are merged together into the exported document | `list(string)` | `[]` | no |
 | <a name="input_logging"></a> [logging](#input\_logging) | The logging configuration for the S3 bucket | <pre>object({<br>    target_bucket = optional(string)<br>    target_prefix = optional(string)<br>  })</pre> | `{}` | no |
