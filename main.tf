@@ -50,13 +50,13 @@ resource "aws_s3_bucket_versioning" "this" {
   }
 }
 
-resource "aws_s3_bucket_logging" "this" {
-  count = length(var.logging) != 0 ? 1 : 0
-
-  bucket        = aws_s3_bucket.this.bucket
-  target_bucket = var.logging.target_bucket
-  target_prefix = var.logging.target_prefix
-}
+#resource "aws_s3_bucket_logging" "this" {
+#  count = length(var.logging) != 0 ? 1 : 0
+#
+#  bucket        = aws_s3_bucket.this.bucket
+#  target_bucket = var.logging.target_bucket
+#  target_prefix = var.logging.target_prefix
+#}
 
 
 
