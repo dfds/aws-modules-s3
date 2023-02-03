@@ -19,6 +19,17 @@ variable "bucket_versioning_configuration" {
   }
 }
 
+variable "create_policy" {
+  type        = bool
+  description = "Whether to create a bucket policy"
+  default     = true
+}
+
+variable "kms_key_arn" {
+  type        = string
+  description = "ARN of the KMS key to use for server side encryption"
+}
+
 variable "logging" {
   type = object({
     target_bucket = optional(string)
@@ -43,56 +54,5 @@ variable "override_policy_documents" {
 variable "source_policy_documents" {
   type        = list(string)
   description = "List of IAM policy documents that are merged together into the exported document. It requires that all documents have unique Sids"
-  default     = []
-}
-
-
-## KMS
-
-variable "create_kms" {
-  type        = bool
-  description = "Whether to create a KMS key for S3 bucket"
-  default     = true
-}
-
-variable "kms_key_alias" {
-  type        = string
-  description = "Alias for the KMS key"
-  default     = ""
-}
-
-variable "enable_kms_default_policy" {
-  type        = bool
-  description = "Whether to enable default policy for KMS key"
-  default     = true
-}
-
-variable "enable_key_rotation" {
-  type        = bool
-  description = "Whether to enable key rotation"
-  default     = true
-}
-
-variable "kms_key_administrators" {
-  type        = list(string)
-  description = "List of KMS key administrators"
-  default     = []
-}
-
-variable "kms_key_users" {
-  type        = list(string)
-  description = "List of KMS key users"
-  default     = []
-}
-
-variable "kms_override_policy_documents" {
-  type        = list(string)
-  description = "List of IAM policy documents that are merged together into the exported document"
-  default     = []
-}
-
-variable "kms_source_policy_documents" {
-  type        = list(string)
-  description = "List of IAM policy documents that are merged together into the exported document"
   default     = []
 }

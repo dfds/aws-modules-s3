@@ -27,6 +27,7 @@ resource "aws_s3_bucket_public_access_block" "this" {
 }
 
 resource "aws_s3_bucket_policy" "this" {
+  count  = var.create_policy ? 1 : 0
   bucket = aws_s3_bucket.this.bucket
   policy = data.aws_iam_policy_document.bucket.json
 }
@@ -36,8 +37,8 @@ resource "aws_s3_bucket_server_side_encryption_configuration" "this" {
 
   rule {
     apply_server_side_encryption_by_default {
-      sse_algorithm     = var.create_kms ? "aws:kms" : "AES256"
-      kms_master_key_id = var.create_kms ? aws_kms_key.this[0].arn : ""
+      sse_algorithm     = "aws:kms"
+      kms_master_key_id = var.kms_key_arn
     }
   }
 }

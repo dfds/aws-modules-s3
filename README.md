@@ -23,8 +23,6 @@ No modules.
 
 | Name | Type |
 |------|------|
-| [aws_kms_alias.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/kms_alias) | resource |
-| [aws_kms_key.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/kms_key) | resource |
 | [aws_s3_bucket.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket) | resource |
 | [aws_s3_bucket_logging.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_logging) | resource |
 | [aws_s3_bucket_ownership_controls.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_ownership_controls) | resource |
@@ -32,9 +30,7 @@ No modules.
 | [aws_s3_bucket_public_access_block.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_public_access_block) | resource |
 | [aws_s3_bucket_server_side_encryption_configuration.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_server_side_encryption_configuration) | resource |
 | [aws_s3_bucket_versioning.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_versioning) | resource |
-| [aws_caller_identity.current](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/caller_identity) | data source |
 | [aws_iam_policy_document.bucket](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
-| [aws_iam_policy_document.kms](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
 
 ## Inputs
 
@@ -43,14 +39,8 @@ No modules.
 | <a name="input_additional_tags"></a> [additional\_tags](#input\_additional\_tags) | Additional tags for the S3 bucket | `object({})` | `{}` | no |
 | <a name="input_bucket_name"></a> [bucket\_name](#input\_bucket\_name) | Name of the S3 bucket | `string` | n/a | yes |
 | <a name="input_bucket_versioning_configuration"></a> [bucket\_versioning\_configuration](#input\_bucket\_versioning\_configuration) | Whether to enable bucket versioning | `string` | `"Enabled"` | no |
-| <a name="input_create_kms"></a> [create\_kms](#input\_create\_kms) | Whether to create a KMS key for S3 bucket | `bool` | `true` | no |
-| <a name="input_enable_key_rotation"></a> [enable\_key\_rotation](#input\_enable\_key\_rotation) | Whether to enable key rotation | `bool` | `true` | no |
-| <a name="input_enable_kms_default_policy"></a> [enable\_kms\_default\_policy](#input\_enable\_kms\_default\_policy) | Whether to enable default policy for KMS key | `bool` | `true` | no |
-| <a name="input_kms_key_administrators"></a> [kms\_key\_administrators](#input\_kms\_key\_administrators) | List of KMS key administrators | `list(string)` | `[]` | no |
-| <a name="input_kms_key_alias"></a> [kms\_key\_alias](#input\_kms\_key\_alias) | Alias for the KMS key | `string` | `""` | no |
-| <a name="input_kms_key_users"></a> [kms\_key\_users](#input\_kms\_key\_users) | List of KMS key users | `list(string)` | `[]` | no |
-| <a name="input_kms_override_policy_documents"></a> [kms\_override\_policy\_documents](#input\_kms\_override\_policy\_documents) | List of IAM policy documents that are merged together into the exported document | `list(string)` | `[]` | no |
-| <a name="input_kms_source_policy_documents"></a> [kms\_source\_policy\_documents](#input\_kms\_source\_policy\_documents) | List of IAM policy documents that are merged together into the exported document | `list(string)` | `[]` | no |
+| <a name="input_create_policy"></a> [create\_policy](#input\_create\_policy) | Whether to create a bucket policy | `bool` | `true` | no |
+| <a name="input_kms_key_arn"></a> [kms\_key\_arn](#input\_kms\_key\_arn) | ARN of the KMS key to use for server side encryption | `string` | n/a | yes |
 | <a name="input_logging"></a> [logging](#input\_logging) | The logging configuration for the S3 bucket | <pre>object({<br>    target_bucket = optional(string)<br>    target_prefix = optional(string)<br>  })</pre> | `{}` | no |
 | <a name="input_object_ownership"></a> [object\_ownership](#input\_object\_ownership) | Object ownership. Valid values: `BucketOwnerPreferred`, `ObjectWriter` or `BucketOwnerEnforced` | `string` | `"BucketOwnerEnforced"` | no |
 | <a name="input_override_policy_documents"></a> [override\_policy\_documents](#input\_override\_policy\_documents) | List of IAM policy documents that are merged together into the exported document. It will  will iteratively override matching Sids | `list(string)` | `[]` | no |
@@ -58,5 +48,8 @@ No modules.
 
 ## Outputs
 
-No outputs.
+| Name | Description |
+|------|-------------|
+| <a name="output_bucket_arn"></a> [bucket\_arn](#output\_bucket\_arn) | ARN of the S3 bucket |
+| <a name="output_bucket_domain_name"></a> [bucket\_domain\_name](#output\_bucket\_domain\_name) | The bucket domain name. Will be of format `bucketname.s3.amazonaws.com` |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
