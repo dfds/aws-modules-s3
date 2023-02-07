@@ -1,7 +1,8 @@
 # aws-modules-s3
 Module for AWS S3 bucket
 
-<!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+# Documentation
+<!-- BEGIN_TF_DOCS -->
 ## Requirements
 
 | Name | Version |
@@ -13,7 +14,7 @@ Module for AWS S3 bucket
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | 4.52.0 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | >= 4.50.0 |
 
 ## Modules
 
@@ -51,4 +52,4 @@ No modules.
 | <a name="output_bucket_arn"></a> [bucket\_arn](#output\_bucket\_arn) | ARN of the S3 bucket |
 | <a name="output_bucket_domain_name"></a> [bucket\_domain\_name](#output\_bucket\_domain\_name) | The bucket domain name. Will be of format `bucketname.s3.amazonaws.com` |
 | <a name="output_bucket_name"></a> [bucket\_name](#output\_bucket\_name) | Name of the bucket |
-<!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+<!-- END_TF_DOCS -->
