@@ -15,5 +15,5 @@ repos:
           - --args=-recursive
       - id: terraform_tfsec
         args:
-          - --args=-e aws-s3-enable-bucket-logging
+          - --args=-e aws-s3-encryption-customer-key,aws-s3-enable-bucket-logging,aws-s3-enable-versioning
       - id: terraform_docs

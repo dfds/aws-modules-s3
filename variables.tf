@@ -30,14 +30,11 @@ variable "kms_key_arn" {
   description = "ARN of the KMS key to use for server side encryption"
 }
 
-#variable "logging" {
-#  type = object({
-#    target_bucket = optional(string)
-#    target_prefix = optional(string)
-#  })
-#  description = "The logging configuration for the S3 bucket"
-#  default     = {}
-#}
+variable "logging_bucket_name" {
+  type        = string
+  description = "Name of the S3 bucket for logs. If not specified, the logging bucket will be created"
+  default     = false
+}
 
 variable "object_ownership" {
   type        = string
