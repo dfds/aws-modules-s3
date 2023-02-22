@@ -19,6 +19,12 @@ variable "bucket_versioning_configuration" {
   }
 }
 
+variable "create_logging_bucket" {
+  type        = bool
+  description = "Whether to create logging bucket"
+  default     = false
+}
+
 variable "create_policy" {
   type        = bool
   description = "Whether to create a bucket policy"
@@ -32,8 +38,7 @@ variable "kms_key_arn" {
 
 variable "logging_bucket_name" {
   type        = string
-  description = "Name of the S3 bucket for logs. If not specified, the logging bucket will be created"
-  default     = ""
+  description = "Name of the S3 bucket for logs. Either an existing logging bucket or the name of the bucket to be created"
 }
 
 variable "object_ownership" {
