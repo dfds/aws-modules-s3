@@ -33,7 +33,7 @@ variable "kms_key_arn" {
 variable "logging_bucket_name" {
   type        = string
   description = "Name of the S3 bucket for logs. If not specified, the logging bucket will be created"
-  default     = false
+  default     = ""
 }
 
 variable "object_ownership" {

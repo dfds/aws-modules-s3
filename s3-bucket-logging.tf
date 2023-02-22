@@ -1,7 +1,6 @@
 module "logging_bucket" {
-  providers = { aws = aws.logs }
-  source    = "./s3-logging-bucket"
-  count     = var.logging_bucket_name == null ? 1 : 0
+  source = "./s3-logging-bucket"
+  count  = var.logging_bucket_name == null ? 1 : 0
 
   logging_bucket_name = var.logging_bucket_name
   logs_prefix         = local.logs_prefix
