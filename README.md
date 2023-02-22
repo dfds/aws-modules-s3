@@ -43,9 +43,10 @@ Module for AWS S3 bucket
 | <a name="input_additional_tags"></a> [additional\_tags](#input\_additional\_tags) | Additional tags for the S3 bucket | `object({})` | `{}` | no |
 | <a name="input_bucket_name"></a> [bucket\_name](#input\_bucket\_name) | Name of the S3 bucket | `string` | n/a | yes |
 | <a name="input_bucket_versioning_configuration"></a> [bucket\_versioning\_configuration](#input\_bucket\_versioning\_configuration) | Whether to enable bucket versioning | `string` | `"Enabled"` | no |
+| <a name="input_create_logging_bucket"></a> [create\_logging\_bucket](#input\_create\_logging\_bucket) | Whether to create logging bucket | `bool` | `false` | no |
 | <a name="input_create_policy"></a> [create\_policy](#input\_create\_policy) | Whether to create a bucket policy | `bool` | `true` | no |
 | <a name="input_kms_key_arn"></a> [kms\_key\_arn](#input\_kms\_key\_arn) | ARN of the KMS key to use for server side encryption | `string` | n/a | yes |
-| <a name="input_logging_bucket_name"></a> [logging\_bucket\_name](#input\_logging\_bucket\_name) | Name of the S3 bucket for logs. If not specified, the logging bucket will be created | `string` | `false` | no |
+| <a name="input_logging_bucket_name"></a> [logging\_bucket\_name](#input\_logging\_bucket\_name) | Name of the S3 bucket for logs. Either an existing logging bucket or the name of the bucket to be created | `string` | n/a | yes |
 | <a name="input_object_ownership"></a> [object\_ownership](#input\_object\_ownership) | Object ownership. Valid values: `BucketOwnerPreferred`, `ObjectWriter` or `BucketOwnerEnforced` | `string` | `"BucketOwnerEnforced"` | no |
 | <a name="input_override_policy_documents"></a> [override\_policy\_documents](#input\_override\_policy\_documents) | List of IAM policy documents that are merged together into the exported document. It will  will iteratively override matching Sids | `list(string)` | `[]` | no |
 | <a name="input_source_policy_documents"></a> [source\_policy\_documents](#input\_source\_policy\_documents) | List of IAM policy documents that are merged together into the exported document. It requires that all documents have unique Sids | `list(string)` | `[]` | no |

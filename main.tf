@@ -51,7 +51,9 @@ resource "aws_s3_bucket_versioning" "this" {
 }
 
 resource "aws_s3_bucket_logging" "this" {
+  depends_on = [module.logging_bucket]
+
   bucket        = aws_s3_bucket.this.bucket
-  target_bucket = var.logging_bucket_name != null ? var.logging_bucket_name : module.logging_bucket[0].logging_bucket_name
+  target_bucket = var.logging_bucket_name
   target_prefix = local.logs_prefix
 }
