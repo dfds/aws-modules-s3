@@ -1,6 +1,6 @@
 module "logging_bucket" {
   source = "./s3-logging-bucket"
-  count  = var.logging_bucket_name == null ? 1 : 0
+  count  = var.logging_bucket_name != "" ? 1 : 0
 
   logging_bucket_name = "${var.bucket_name}-logs"
   logs_prefix         = local.logs_prefix
