@@ -69,7 +69,7 @@ variable "lifecycle_rules" {
       date = optional(string)
       days = optional(number)
     }))
-    filter = object({
+    filter = optional(object({
       and = optional(object({
         object_size_greater_than = optional(number)
         object_size_less_than    = optional(number)
@@ -83,7 +83,7 @@ variable "lifecycle_rules" {
         key   = optional(string)
         value = optional(string)
       }))
-    })
+    }))
     id = string
     noncurrent_version_expiration = optional(object({
       newer_noncurrent_versions = optional(number)

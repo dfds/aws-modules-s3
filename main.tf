@@ -67,26 +67,29 @@ resource "aws_s3_bucket_lifecycle_configuration" "this" {
       id     = rule.value.id
       status = rule.value.status
 
-      filter {
-        dynamic "and" {
-          for_each = lookup(rule.value.filter, "and", null) != null ? [rule.value.filter.and] : []
-          content {
-            object_size_greater_than = lookup(and.value, "object_size_greater_than", null)
-            object_size_less_than    = lookup(and.value, "object_size_less_than", null)
-            prefix                   = lookup(and.value, "prefix", null)
-            tags                     = lookup(and.value, "tags", null)
+      dynamic "filter" {
+        for_each = lookup(rule.value, "filter", null) != null ? [rule.value.filter] : []
+        content {
+          dynamic "and" {
+            for_each = lookup(rule.value.filter, "and", null) != null ? [rule.value.filter.and] : []
+            content {
+              object_size_greater_than = lookup(and.value, "object_size_greater_than", null)
+              object_size_less_than    = lookup(and.value, "object_size_less_than", null)
+              prefix                   = lookup(and.value, "prefix", null)
+              tags                     = lookup(and.value, "tags", null)
+            }
           }
-        }
 
-        object_size_greater_than = lookup(rule.value.filter, "object_size_greater_than", null)
-        object_size_less_than    = lookup(rule.value.filter, "object_size_less_than", null)
-        prefix                   = lookup(rule.value.filter, "prefix", "")
+          object_size_greater_than = lookup(rule.value.filter, "object_size_greater_than", null)
+          object_size_less_than    = lookup(rule.value.filter, "object_size_less_than", null)
+          prefix                   = lookup(rule.value.filter, "prefix", "")
 
-        dynamic "tag" {
-          for_each = lookup(rule.value.filter, "tag", null) != null ? [rule.value.filter.tag] : []
-          content {
-            key   = tag.value.key
-            value = tag.value.value
+          dynamic "tag" {
+            for_each = lookup(rule.value.filter, "tag", null) != null ? [rule.value.filter.tag] : []
+            content {
+              key   = tag.value.key
+              value = tag.value.value
+            }
           }
         }
       }
