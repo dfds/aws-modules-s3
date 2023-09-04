@@ -11,7 +11,7 @@ variable "source_buckets" {
   description = "List of source buckets"
 }
 
-variable "lifecycle_rules" {
+variable "logging_bucket_lifecycle_rules" {
   type = list(object({
     abort_incomplete_multipart_upload = optional(object({
       days_after_initiation = optional(number)

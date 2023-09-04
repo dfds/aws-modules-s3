@@ -33,10 +33,10 @@ resource "aws_s3_bucket_versioning" "this" {
 }
 
 resource "aws_s3_bucket_lifecycle_configuration" "this" {
-  count  = length(var.lifecycle_rules) != 0 ? 1 : 0
+  count  = length(var.logging_bucket_lifecycle_rules) != 0 ? 1 : 0
   bucket = aws_s3_bucket.this.bucket
   dynamic "rule" {
-    for_each = var.lifecycle_rules
+    for_each = var.logging_bucket_lifecycle_rules
     content {
       id     = rule.value.id
       status = rule.value.status
