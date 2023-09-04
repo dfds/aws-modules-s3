@@ -9,4 +9,5 @@ module "logging_bucket" {
       source_bucket_arn = aws_s3_bucket.this.arn
     }
   ]
+  lifecycle_rules = var.logging_bucket_lifecycle_rules
 }
